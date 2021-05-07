@@ -64,6 +64,27 @@ git checkout -b ブランチ名
 git checkout -b feature/（機能名）
 git checkout -b feature/funcA
 
+■pull request
+Assignees：自身を選択する
+
+■git pull
+git checkout main
+GithubのRemote上では最新の情報となっているが、Localの情報は古いままとなっているので、
+サーバーの最新の情報を反映させるためにgit pullを実行する
+git pull
+
+■Git Graph
+コミットの履歴をグラフ状で見ることができる
+pull requestをmergeした時はmerge commitという履歴が残る
+
+■git branch
+git branch
+→localのブランチの一覧が取得できる
+git branch -D ブランチ名でbranchを削除できる
+git branch -D feature/funcA
+
+■Squash and merge
+git checkout -b feature/funcB
 
 yarn dev
 yarn test
