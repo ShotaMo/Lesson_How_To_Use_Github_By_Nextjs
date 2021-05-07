@@ -1,0 +1,50 @@
+npx create-next-app .
+yarn add -D jest @testing-library/react @testing-library/jest-dom @testing-library/dom babel-jest @babel/core @testing-library/user-event jest-css-modules
+
+touch .babelrc
+
+{
+    "presets": ["next/babel"]
+}
+
+
+"jest": {
+    "testPathIgnorePatterns": [
+        "<rootDir>/.next/",
+        "<rootDir>/node_modules/"
+    ],
+    "moduleNameMapper": {
+        "\\.(css)$": "<rootDir>/node_modules/jest-css-modules"
+    }
+}
+（補足）
+moduleNameMapper：テストに必要のない階層を無視するように設定する
+→/.next等はNextjsをビルドしたとき等に生成されるファイルを格納するフォルダ
+→テストとは関係ないためスキップする
+
+moduleNameMapper：テストをする時にCSSのファイルをそのまま読み込んでしまうとうまくテストをすることができないため、
+cssファイルがある場合は、jest-css-modulesというcssをmockしてくれるライブラリを活用するように設定する
+
+
+"scripts": {
+    ...
+    "test": "jest --env=jsdom --verbose"
+},
+→yarn testをつかってjestを実行できるようになる
+
+touch .prettierrc
+→prettierの設定ファイルを作成する
+
+{
+    "singleQuote": true,
+    "semi": false
+}
+singleQuote：「"」のうち「'」に変換できる物があれば自動的に変換する
+semi：不要なセミコロンを自動削除する
+
+
+"git.enableSmartCommit": true,
+→変更した物が全て自動的にステージングされる
+
+yarn dev
+yarn test
