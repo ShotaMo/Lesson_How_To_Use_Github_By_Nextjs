@@ -1,3 +1,4 @@
+■各種設定
 npx create-next-app .
 yarn add -D jest @testing-library/react @testing-library/jest-dom @testing-library/dom babel-jest @babel/core @testing-library/user-event jest-css-modules
 
@@ -45,6 +46,24 @@ semi：不要なセミコロンを自動削除する
 
 "git.enableSmartCommit": true,
 →変更した物が全て自動的にステージングされる
+
+git push -u origin main
+→"-u"は上流ブランチを指定している（今回で言えばLocalのmainを上流ブランチとして、Remoteのmainブランチを指定する）
+→上流ブランチを指定しておくと、以降では"git push"等のコマンドを省略系で書くことができる
+（例えば、git pushを実行すると、自動でpush先がRemoteのmainとなる）
+
+■各種設定（Github）
+Settings→「Automatically delete head branches」をオンにする
+
+■new branch
+新しく機能を追加する場合はその機能に対するブランチを新たに切る
+-b:ブランチを新しく作成するためのコマンド
+checkout:生成された新しいブランチに移動するコマンド
+
+git checkout -b ブランチ名
+git checkout -b feature/（機能名）
+git checkout -b feature/funcA
+
 
 yarn dev
 yarn test
