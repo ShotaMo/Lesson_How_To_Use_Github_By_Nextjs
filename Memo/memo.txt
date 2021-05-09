@@ -106,6 +106,25 @@ Github>Issues>new issue
 
 git checkout -b feature/funcC
 
+pull requestの画面で「close #」と打つと、関連付けしたいIssueの一覧が表示される
+→pull requestがmergeされたら自動的に紐づくIssueがcloseされる
+
+git checkout main
+git pull
+git branch
+git branch -D feature/funcC
+
+■Vercel(deploy + Preview Mode)
+・Github>Code>「Deploy on Vercel」を選択
+・Personal Accountを選択
+・BUILD COMMANDをoverrideして、「yarn test && yarn build」を入力
+→テストをパスした場合のみbuild（deploy)されるようになる
+・「Congratulations!」が表示されたら、deployされた本番環境にアクセスするために「Visit」を押下する
+
+・Deployを行った後に修正をしたい場合
+①new issue作成
+②作業用のブランチを作成して、コードを修正する（git checkout -b fix/title）
+
 
 yarn dev
 yarn test
