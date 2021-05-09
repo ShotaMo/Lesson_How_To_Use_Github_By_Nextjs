@@ -84,7 +84,28 @@ git branch -D ブランチ名でbranchを削除できる
 git branch -D feature/funcA
 
 ■Squash and merge
+feaureで行った複数のcommitをひとまとめにしてくれる
+ひとまとめにしたcommitはmerge commitとしてmainのbranchの先頭に1つ追加してくれる
+メリット：mainの履歴をシンプルにできる
+（例えば作業用のfeature branchでcommitを10回したとしても、
+　main branchの履歴としてはそれらをまとめた1つだけのmerge commitが履歴として追加されるだけ）
+
 git checkout -b feature/funcB
+git push origin HEAD
+git checkout main
+git pull
+git branch
+git branch -D feature/funcB
+
+■Issue + Kanban board
+Github>Projects>new projectで「Automated kanban with reviews」を選択して新規作成
+
+Github>Issues>new issue
+・Assigneesは自分を指定する
+・Projectsで任意のProjectを紐づける
+
+git checkout -b feature/funcC
+
 
 yarn dev
 yarn test
