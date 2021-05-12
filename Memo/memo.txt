@@ -124,7 +124,18 @@ git branch -D feature/funcC
 ・Deployを行った後に修正をしたい場合
 ①new issue作成
 ②作業用のブランチを作成して、コードを修正する（git checkout -b fix/title）
+③pull requestを実行し、「close #」で該当するブランチを指定しておく
+④pushをすると、Vercelのautomatic deployでpreview用の本番環境のリンクが自動で生成される
+⑤Reviewerはコードのレビュー及びPreview用のサイトを確認した上でapproveする
+⑥mergeする
 
+git checkout main
+git pull
+git branch
+git branch -D fix/title
+
+■TestがFailとなあった場合の処理
+git checkout -b feature/funcD
 
 yarn dev
 yarn test
