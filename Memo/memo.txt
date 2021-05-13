@@ -136,6 +136,15 @@ git branch -D fix/title
 
 ■TestがFailとなあった場合の処理
 git checkout -b feature/funcD
+git push origin HEAD
+
+Pull Requestの画面を見ると「Preview: Failed」により
+PreviewモードがFailしていることがわかる
+また、「Vercel — Deployment has failed」によりDeployもFailしていることがわかる
+
+Pushをした時に自動でyarn testが実行される
+Previewモードへのデプロイはテストがパスした時のみ行われるので
+失敗した場合はPreviewモードへのデプロイが行われなくなる
 
 yarn dev
 yarn test
