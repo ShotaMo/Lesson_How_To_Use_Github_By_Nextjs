@@ -55,6 +55,21 @@ git push -u origin main
 ■各種設定（Github）
 Settings→「Automatically delete head branches」をオンにする
 
+■フロントエンド開発のための典型的なGit/GitHub開発フローについて
+①main branchに対して新しく機能を追加したり、バグを修正したりする場合は、issueを作成する
+②issueに対応したbranchを作成する
+③branchの中でcodeの編集・commit・リモートブランチへのpushを行う
+　ここで、Vercelの特徴として、pushをトリガーとして自動deployの機能を活用してdeployする前に自動でテストを走らせるようにする
+　そして、リモートブランチにpushした時はVercelがPreivew用のURLリンクを自動生成してくれる
+④pull requestを実施し、選択してreviewerに送信する
+⑤送信されたpull requestをreviewerがコードレビューと承認を行っていく
+　reviewerは通常のコードレビューに加え、VercelのPreviewのリンクを押下することで、そのコードが実際にどのように動くのかということを確認できる
+⑥承認されると、mergeをすることができる。mergeをすると、連携したissueとリモートブランチが自動的に削除される
+　そして、merge後のソースコードに対して再度自動テストが走り、テストがパスされると、メインブランチに対するdeployが自動的に行われる
+　テストがFailした場合は、Productionへのdeployがブロックされる
+⑦git pullをして、サーバ上の最新の情報をlocalに反映させる
+
+
 ■new branch
 新しく機能を追加する場合はその機能に対するブランチを新たに切る
 -b:ブランチを新しく作成するためのコマンド
@@ -63,6 +78,10 @@ checkout:生成された新しいブランチに移動するコマンド
 git checkout -b ブランチ名
 git checkout -b feature/（機能名）
 git checkout -b feature/funcA
+
+git push origin HEAD
+origin:リモートのことを表す
+origin HEAD：イマ入っているbranchに対応しているRemote BranchにPushしてくれる
 
 ■pull request
 Assignees：自身を選択する
@@ -145,6 +164,11 @@ PreviewモードがFailしていることがわかる
 Pushをした時に自動でyarn testが実行される
 Previewモードへのデプロイはテストがパスした時のみ行われるので
 失敗した場合はPreviewモードへのデプロイが行われなくなる
+
+git checkout main
+git pull
+git branch
+git branch -D feature/funcD
 
 yarn dev
 yarn test
